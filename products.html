@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fdf2f4">
+<meta name="description" content="Học liệu số KHTN — video, infographic, mô phỏng tương tác và hồ sơ thiết kế của Lê Minh Nhật">
+<title>Học liệu số KHTN — Lê Minh Nhật</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&family=Outfit:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* Giao diện riêng cho trang Học liệu số */
+:root{scroll-behavior:smooth;scroll-padding-top:110px}
+.page-hero{padding-bottom:18px}
+.page-hero .section-note{max-width:390px;line-height:1.75}
+.page-section{padding-top:clamp(28px,5vw,56px);padding-bottom:clamp(28px,5vw,56px)}
+.video-card,.hl-card,.tool-item{box-shadow:0 10px 30px #22233b0a}
+.video-frame{aspect-ratio:16/9;overflow:hidden;border-radius:18px;background:#171923}
+.video-frame iframe{width:100%;height:100%;border:0}
+.video-bar{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:16px 20px}
+.video-bar p{margin:0;color:#667085;line-height:1.6}
+.hl{max-width:900px}
+.hl-card{scroll-margin-top:120px}
+.hl-panel{scroll-margin-top:190px}
+.hl h2{font-size:clamp(1.35rem,3vw,1.85rem)}
+.hl-scene{line-height:1.75}
+.hl-steps{position:sticky;top:140px;z-index:10;padding:8px 0;background:rgba(253,242,244,.92);backdrop-filter:blur(8px)}
+.hl-steps span{min-height:42px;display:flex;align-items:center;justify-content:center}
+.hl-btn{min-height:46px;padding:11px 20px;transition:transform .16s,background .16s,box-shadow .16s}
+.hl-btn:not(:disabled):hover{transform:translateY(-1px);box-shadow:0 6px 15px #b8325a26}
+.hl-btn.alt:hover{background:#fff4f7}
+.hl-opt{min-height:48px;line-height:1.55;transition:border-color .16s,background .16s}
+.hl textarea{min-height:150px;line-height:1.65}
+.tools-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+.tool-item{gap:14px}
+.tool-img{border-radius:12px}
+.hl table{min-width:560px}
+#log{display:block;overflow-x:auto}
+.hl-row{align-items:center}
+@media(max-width:760px){
+ .hl-steps{top:128px;gap:5px}
+ .hl-steps span{flex:1 1 28%;padding:8px 6px;font-size:.76rem}
+ .hl-panel{scroll-margin-top:170px}
+ .video-bar{align-items:flex-start;padding:14px}
+ .video-bar .btn{width:100%;justify-content:center}
+ .tool-item{padding:16px}
+}
+@media(max-width:480px){
+ .page-section .wrap{padding-left:16px;padding-right:16px}
+ .hl-card{border-radius:16px}
+ .hl-row>.hl-btn,.hl-row>a.hl-btn{flex:1 1 100%;text-align:center;justify-content:center}
+ .hl-row label.hl-opt{flex:1 1 100%!important}
+ .hl-scale{font-size:1.65rem}
+}
+@media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}.hl-btn,.hl-opt{transition:none}}
+/* --- CSS HỆ THỐNG GỐC CỦA TRANG (GIỮ NGUYÊN) --- */
+.hl{--a:#b8325a;--a2:#fbe3ea;--ink:#2b1d22;--mut:#6d5a61;--ok:#1f7a55;--okbg:#e3f4ec;--line:#ead3da;max-width:820px;margin:0 auto;color:var(--ink);font-family:'Be Vietnam Pro',system-ui,sans-serif;line-height:1.65}
+.hl-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:clamp(18px,4vw,34px)}
+.hl-steps{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.hl-steps span{flex:1 1 150px;padding:9px 14px;border-radius:999px;background:#f6ecef;color:var(--mut);font-size:.88rem;font-weight:600;text-align:center}
+.hl-steps span.on{background:var(--a);color:#fff}.hl-steps span.done{background:var(--a2);color:var(--a)}
+.hl h2{font-family:'Lora',serif;font-size:clamp(1.3rem,3.2vw,1.7rem);margin:0 0 6px;line-height:1.3}
+.hl h3{font-size:1.02rem;margin:22px 0 8px}
+.hl p{margin:0 0 12px}.hl .mut{color:var(--mut);font-size:.92rem}
+.hl-scene{background:var(--a2);border-radius:14px;padding:16px 18px;margin:14px 0 4px}
+.hl-opt{display:flex;gap:10px;align-items:flex-start;padding:11px 14px;border:1.5px solid var(--line);border-radius:12px;margin:8px 0;cursor:pointer}
+.hl-opt:hover{border-color:var(--a)}.hl-opt:has(input:checked){border-color:var(--a);background:var(--a2)}
+.hl-opt input{margin-top:5px;accent-color:var(--a)}
+.hl-btn{font:inherit;font-weight:700;border:0;border-radius:999px;padding:11px 24px;background:var(--a);color:#fff;cursor:pointer;margin-top:14px}
+.hl-btn:disabled{background:#d9c6cc;cursor:not-allowed}.hl-btn.alt{background:#fff;color:var(--a);border:1.5px solid var(--a)}
+.hl-btn:focus-visible,.hl-opt:focus-within{outline:3px solid #f08aa8;outline-offset:2px}
+.hl-ev{border:1px solid var(--line);border-radius:14px;padding:16px;margin:12px 0}
+.hl-ev.seen{border-color:var(--ok);background:#fbfefc}
+.hl-ev h3{margin:0 0 8px;display:flex;justify-content:space-between;gap:8px}
+.hl-tag{font-size:.78rem;color:var(--ok);font-weight:700;visibility:hidden}.hl-ev.seen .hl-tag{visibility:visible}
+.hl-scale{background:#1f1a1c;color:#9df0c4;font-family:'Fira Code',monospace;font-size:2rem;text-align:center;padding:14px;border-radius:12px;letter-spacing:.04em}
+.hl-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.hl table{border-collapse:collapse;width:100%;font-size:.92rem;margin-top:10px}
+.hl td,.hl th{border:1px solid var(--line);padding:7px 10px;text-align:left}.hl th{background:#f6ecef}
+.hl-res{background:var(--okbg);border-radius:10px;padding:10px 14px;margin-top:10px;font-size:.94rem}
+.hl-cmp{background:#fff7e0;border-left:5px solid #e0a800;border-radius:10px;padding:14px 16px;margin:18px 0}
+.hl textarea{width:100%;min-height:130px;font:inherit;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;resize:vertical}
+.hl textarea:focus{outline:3px solid #f08aa8;border-color:var(--a)}
+.hl input[type=range]{width:100%;accent-color:var(--a)}
+.hl [hidden]{display:none!important}
+.hl sub{font-size:.7em}
+.hl canvas{width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:12px;margin-top:10px;display:block}
+.hl-chk{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:6px}
+.hl-chk li{padding:8px 12px;border-radius:10px;background:#f6ecef;font-size:.92rem;color:var(--mut)}
+.hl-chk li::before{content:"○ "}.hl-chk li.seen{background:var(--okbg);color:var(--ok);font-weight:600}.hl-chk li.seen::before{content:"✓ "}
+.hl-ev .hl-row label{font-size:.92rem}
+@media (prefers-reduced-motion:no-preference){.hl-panel{animation:hlin .55s cubic-bezier(.22,1,.36,1) both}@keyframes hlin{from{opacity:0;transform:translateY(18px) scale(.985)}}}
+
+/* --- CSS TỐI ƯU CHO PHẦN CÔNG CỤ LƯU VẾT --- */
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-top: 16px; }
+.tool-item { border: 1.5px solid var(--line); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 12px; transition: border-color .2s ease; background: #fff; }
+.tool-item:hover { border-color: var(--a); }
+.tool-head { display: flex; align-items: center; gap: 12px; }
+.tool-head img { width: 32px; height: 32px; object-fit: contain; }
+.tool-head h3 { margin: 0; font-size: 1.1rem; color: var(--ink); }
+.tool-desc { margin: 0; font-size: 0.9rem; color: var(--mut); line-height: 1.5; }
+.tool-img { width: 100%; aspect-ratio: 16/9; background: #f8f9fa; border: 1px solid var(--line); border-radius: 8px; object-fit: cover; }
+.tool-link { font-size: 0.85rem; font-weight: 700; color: var(--a); text-decoration: none; align-self: flex-start; }
+.tool-link:hover { text-decoration: underline; }
+/* Ghi đè sau bộ quy tắc cũ để giao diện mới có hiệu lực nhất quán */
+.hl{max-width:900px}
+.hl h2{font-size:clamp(1.35rem,3vw,1.85rem)}
+.hl-btn{padding:11px 20px}
+.tools-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+</style>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="cursor-dot" id="cursorDot"></div><div class="cursor-ring" id="cursorRing"></div>
+
+<nav class="nav">
+  <a class="brand" href="index.html#home"><span class="brand-mark">N</span>MINH NHẬT</a>
+  <div class="nav-links"><a href="index.html#about">About</a><a href="index.html#cv">CV</a><a href="index.html#work">Dự án</a><a href="index.html#science">Học liệu KHTN</a><a href="index.html#contact">Contact</a><a class="active" href="products.html" aria-current="page">Học liệu số ↗</a></div>
+  <a class="nav-cta" href="index.html">← Trang chủ</a>
+</nav>
+
+<main>
+<section class="page-hero"><div class="wrap">
+  <div class="section-head reveal" style="margin-bottom:0">
+    <div><div class="section-label">Trang 02 — Sản phẩm KHTN</div><h1 class="section-title">Học liệu <em>số.</em></h1></div>
+    <p class="section-note"></p>
+  </div>
+</div></section>
+
+<nav class="product-filter" aria-label="Lọc sản phẩm"><div class="filter-inner">
+  <button class="filter-btn is-active" type="button" data-filter="all" aria-pressed="true">Tất cả <span class="count"></span></button>
+  <button class="filter-btn" type="button" data-filter="interactive" aria-pressed="false">Mô phỏng tương tác <span class="count"></span></button>
+  <button class="filter-btn" type="button" data-filter="visual" aria-pressed="false">Video, Infographic <span class="count"></span></button>
+  <button class="filter-btn" type="button" data-filter="profile" aria-pressed="false">Hồ sơ dạy học <span class="count"></span></button>
+</div></nav>
+
+<!-- VIDEO BÀI GIẢNG (CẤU TRÚC GỐC, HIỂN THỊ CHUẨN) -->
+<section class="page-section" id="video" data-cat="visual"><div class="wrap">
+  <div class="video-card reveal lift"><div class="product-head"><h2 class="p-title">Video ăn uống khoa học được thiết kế bằng AI</em></h2><p class="mut">Sản phẩm video bài giảng ứng dụng công nghệ số.</p><ul class="badges" aria-label="Phân loại sản phẩm"><li class="badge b-gd">GDPT 2018</li><li class="badge b-md">Media Design</li></ul></div>
+    <div class="video-frame">
+      <iframe src="https://drive.google.com/file/d/1CDCwp8eBhikYz7ERz0WZuOnAPRUeTwlB/preview" title="Video Đổi mới Phương pháp Dạy học KHTN" loading="lazy" allow="autoplay; fullscreen" allowfullscreen referrerpolicy="no-referrer"></iframe>
+    </div>
+    <div class="video-bar">
+      <p>Nếu video không hiển thị, hãy mở trực tiếp trên Google Drive.</p>
+      <a class="btn btn-dark" href="https://drive.google.com/file/d/1CDCwp8eBhikYz7ERz0WZuOnAPRUeTwlB/view?usp=sharing" target="_blank" rel="noopener">Mở trên Google Drive ↗</a>
+    </div>
+  </div>
+</div></section>
+
+<!-- INFOGRAPHIC ĐỘNG VẬT NGUYÊN SINH -->
+<section class="page-section" id="infographic" data-cat="visual"><div class="wrap"><div class="hl">
+  <div class="hl-card reveal lift product-card" style="margin-bottom: 32px;">
+    <div class="product-head"><h2 class="p-title">Infographic hệ thống hoá một số sinh vật nguyên sinh</em></h2><p class="mut">YCCĐ: Nhận biết được một số đối tượng nguyên sinh vật thông qua quan sát hình ảnh, mẫu 
+vật (ví dụ: trùng roi, trùng đế giày, trùng biến hình, tảo silic, tảo lục đơn bào, ...)   KHTN lớp 6</p><ul class="badges" aria-label="Phân loại sản phẩm"><li class="badge b-gd">GDPT 2018</li><li class="badge b-md">Media Design</li></ul></div>
+    <div style="border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 16px;">
+      <img src="https://lh3.googleusercontent.com/d/1jgartQFfisEwjsLlmWycMJpzdxm2gFxD" alt="Infographic Động vật nguyên sinh" style="width: 100%; display: block;" loading="lazy">
+    </div>
+    <p class="mut" style="font-size: 0.85rem; margin-top: 12px; text-align: right; font-style: italic;">Nguồn hình ảnh: iStock, tìm ảnh các sinh vật nguyên sinh ứng với YCCĐ trên iStock sau đó dùng AI dựng nên Infographic.</p>
+  </div>
+</div></div></section>
+
+<!-- HỌC LIỆU SỐ KHTN 6 — MÔ PHỎNG TƯƠNG TÁC -->
+<section class="page-section" id="hoc-lieu" data-cat="interactive"><div class="wrap">
+  <div class="section-head reveal">
+    <div><div class="section-label">Học liệu số</div><h2 class="section-title">Mô phỏng tương tác <em>Định luật Bảo toàn Khối lượng</em></h2><ul class="badges" aria-label="Phân loại sản phẩm"><li class="badge b-gd">GDPT 2018</li><li class="badge b-cv">HTML5 Canvas Interactive</li></ul></div>
+    <p class="section-note"></p>
+  </div>
+<div class="hl">
+  
+  <!-- MÀN 1: BỘC LỘ -->
+  <div class="hl-card hl-panel" data-step="1">
+    <h2>Chuyện gì xảy ra với 10 g đường?</h2>
+    <div class="hl-scene">Em cân một cốc chứa <b>100,0 g nước</b> và một thìa chứa <b>10,0 g đường</b>. Em đổ đường vào cốc, khuấy đến khi nhìn không còn thấy hạt đường nào — nước trong suốt.</div>
+    <h3>Câu 1. Em cân lại cả cốc. Số chỉ của cân sẽ là:</h3>
+    <label class="hl-opt"><input type="radio" name="q1" value="A" data-t="khoảng 100 g (đường đã biến mất)"><span>A. Khoảng 100 g — đường đã biến mất nên không còn nặng thêm.</span></label>
+    <label class="hl-opt"><input type="radio" name="q1" value="B" data-t="giữa 100 g và 110 g (đường mất một phần)"><span>B. Lớn hơn 100 g nhưng nhỏ hơn 110 g.</span></label>
+    <label class="hl-opt"><input type="radio" name="q1" value="C" data-t="đúng 110 g"><span>C. Đúng 110 g.</span></label>
+    <label class="hl-opt"><input type="radio" name="q1" value="D" data-t="nhỏ hơn 100 g"><span>D. Nhỏ hơn 100 g.</span></label>
+    <h3>Câu 2. Theo em, lúc này đường đang ở đâu?</h3>
+    <label class="hl-opt"><input type="radio" name="q2" value="1" data-t="đường đã biến mất hoàn toàn"><span>Đường đã biến mất hoàn toàn.</span></label>
+    <label class="hl-opt"><input type="radio" name="q2" value="2" data-t="đường đã biến thành nước"><span>Đường đã biến thành nước.</span></label>
+    <label class="hl-opt"><input type="radio" name="q2" value="3" data-t="đường vẫn còn trong cốc"><span>Đường vẫn còn trong cốc.</span></label>
+    <p class="mut" style="margin-top:12px">Chưa có đáp án đúng ở bước này. Em chọn theo suy nghĩ thật của mình nhé.</p>
+    <button class="hl-btn" id="to2" disabled>Chốt dự đoán và xem bằng chứng</button>
+  </div>
+
+  <!-- MÀN 2: ĐỐI CHẤT -->
+  <div class="hl-card hl-panel" data-step="2" hidden>
+    <h2>Để số liệu và quan sát trả lời</h2>
+    <p class="mut" id="myPred"></p>
+    <p>Hãy hoàn thành cả 3 nhiệm vụ trong phòng thí nghiệm ảo bên dưới.</p>
+
+    <div class="hl-ev" id="lab"><h3>Phòng thí nghiệm ảo</h3>
+      <p class="mut">Cân điện tử (đã trừ bì cốc) hiển thị khối lượng chất trong cốc. Làm lần lượt các nút bên dưới, nhớ bật kính phóng đại để nhìn thấy các hạt.</p>
+      <div class="hl-scale" id="scale" aria-live="polite">100,0 g</div>
+      <canvas id="cv" width="640" height="360" role="img" aria-label="Mô phỏng hòa tan đường trong cốc nước, kèm kính phóng đại mô hình hạt"></canvas>
+      <div class="hl-row" style="align-items:center"><label for="sg">Lượng đường: <b id="sgv">10</b> g</label><input type="range" id="sg" min="5" max="20" value="10" style="max-width:260px"><label><input type="checkbox" id="micro" checked> Kính phóng đại mô hình hạt</label></div>
+      <div class="hl-row"><button class="hl-btn" id="b_pour">Đổ đường vào cốc</button><button class="hl-btn alt" id="b_stir" disabled>Khuấy</button><button class="hl-btn alt" id="b_samp" disabled>Lấy mẫu</button><button class="hl-btn alt" id="b_heat" disabled>Đun</button><button class="hl-btn alt" id="b_reset">Làm lại</button></div>
+      <div class="hl-res" id="labMsg" aria-live="polite"></div>
+      <table id="log"><tr><th>Lúc cân</th><th>Số chỉ cân</th></tr><tr><td>Vừa đổ đường, chưa khuấy</td><td class="v" id="v1">—</td></tr><tr><td>Khuấy đến khi không còn thấy hạt đường</td><td class="v" id="v2">—</td></tr><tr><td>Sau khi nước bay hơi hết (chất còn lại)</td><td class="v" id="v3">—</td></tr></table>
+      <ul class="hl-chk"><li id="ev1">Nhiệm vụ 1: Cân trước và sau khi khuấy</li><li id="ev2">Nhiệm vụ 2: Lấy mẫu ở 3 vị trí khác nhau sau khi tan</li><li id="ev3">Nhiệm vụ 3: Đun cho nước bay hơi hết</li></ul>
+    </div>
+    <div class="hl-cmp" id="cmp" hidden></div>
+    <button class="hl-btn" id="to3" disabled>Làm cả 3 thí nghiệm để tiếp tục</button>
+  </div>
+
+  <!-- MÀN 3: PHÁT BIỂU LẠI -->
+  <div class="hl-card hl-panel" data-step="3" hidden>
+    <h2>Nói lại bằng lời của em</h2>
+    <p>Viết 2–3 câu trả lời cho câu hỏi: <b>“Khi đường tan trong nước, đường có biến mất không? Vì sao em kết luận như vậy?”</b></p>
+    <p class="mut">Gợi ý khung câu: “Khi tan trong nước, đường ……… vì ……… (bằng chứng: ………).”</p>
+    <textarea id="ans" aria-label="Câu trả lời của em" placeholder="Em viết ở đây…"></textarea>
+    <h3>Tự kiểm tra bài viết của em</h3>
+    <label class="hl-opt"><input type="checkbox" class="chk"><span>Em đã nói rõ đường <b>còn hay mất</b>.</span></label>
+    <label class="hl-opt"><input type="checkbox" class="chk"><span>Em đã nêu ít nhất <b>một số liệu hoặc quan sát</b> (ví dụ 110,0 g, vị ngọt).</span></label>
+    <label class="hl-opt"><input type="checkbox" class="chk"><span>Em đã nói đường <b>ở dạng nào</b> trong nước (các hạt rất nhỏ, phân tán đều).</span></label>
+    <button class="hl-btn" id="showModel" disabled>Xem cách phát biểu tham khảo</button>
+    <div class="hl-cmp" id="model" hidden style="background:var(--okbg);border-color:var(--ok)">
+      <b>Tham khảo:</b> Khi đường tan trong nước, đường <b>không biến mất</b>. Các hạt đường bị tách ra thành những hạt rất nhỏ, phân tán đều giữa các hạt nước. Bằng chứng: tổng khối lượng vẫn là 110,0 g, nước ở đâu cũng ngọt, và khi cho nước bay hơi thì đường còn lại. Đường tan là sự hòa tan (biến đổi vật lí) và chất tan vẫn còn trong dung dịch.
+      <p style="margin-top:10px;margin-bottom:0">So với bài viết của em và 2 câu trả lời ở phần đầu tiên, em giữ lại ý nào, sửa lại ý nào?</p>
+    </div>
+    <h3>Em chắc chắn đến mức nào về kết luận mới?</h3>
+    <div class="hl-row"><label class="hl-opt" style="margin:0"><input type="radio" name="conf" value="Chưa chắc"><span>Chưa chắc</span></label><label class="hl-opt" style="margin:0"><input type="radio" name="conf" value="Khá chắc"><span>Khá chắc</span></label><label class="hl-opt" style="margin:0"><input type="radio" name="conf" value="Rất chắc"><span>Rất chắc</span></label></div>
+    <div class="hl-row"><button class="hl-btn" id="copy">Sao chép bài làm để gửi cô/thầy</button><button class="hl-btn alt" id="redo">Làm lại từ đầu</button></div>
+    <p class="mut" id="copyMsg" role="status"></p>
+  </div>
+
+  <!-- MÀN 4: KIỂM TRA SAU 2 TUẦN -->
+  <div class="hl-card hl-panel" data-step="4" hidden>
+    <h2>Kiểm tra sau 2 tuần: cách hiểu của em còn giữ không?</h2>
+    <p class="mut">Không tính điểm. Em làm theo trí nhớ, không mở lại bài cũ. Câu 1 giống tình huống lần trước, câu 2 là tình huống mới.</p>
+    <h3>Câu 1. Cốc có 100,0 g nước và 10,0 g đường. Khuấy đến khi đường tan hết, nước trong suốt. Cân chỉ:</h3>
+    <label class="hl-opt"><input type="radio" name="r1" value="A"><span>A. Khoảng 100 g.</span></label>
+    <label class="hl-opt"><input type="radio" name="r1" value="B"><span>B. Lớn hơn 100 g nhưng nhỏ hơn 110 g.</span></label>
+    <label class="hl-opt"><input type="radio" name="r1" value="C"><span>C. Đúng 110 g.</span></label>
+    <label class="hl-opt"><input type="radio" name="r1" value="D"><span>D. Nhỏ hơn 100 g.</span></label>
+    <h3>Câu 2. Hòa 5,0 g muối ăn vào 95,0 g nước, muối tan hết, dung dịch trong suốt. Phát biểu nào đúng?</h3>
+    <label class="hl-opt"><input type="radio" name="r2" value="A"><span>A. Dung dịch chỉ nặng 95 g vì muối đã biến mất.</span></label>
+    <label class="hl-opt"><input type="radio" name="r2" value="B"><span>B. Dung dịch nặng 100,0 g; muối vẫn còn, ở dạng các hạt rất nhỏ phân tán đều trong nước.</span></label>
+    <label class="hl-opt"><input type="radio" name="r2" value="C"><span>C. Dung dịch nặng 100,0 g vì muối đã biến thành nước.</span></label>
+    <label class="hl-opt"><input type="radio" name="r2" value="D"><span>D. Dung dịch nhẹ hơn 100 g vì khi tan muối bị nhẹ đi.</span></label>
+    <h3>Câu 3. Nếu đun cho hết nước, em dự đoán còn lại gì? Giải thích bằng lời của em.</h3>
+    <textarea id="r3" style="min-height:90px" aria-label="Giải thích của em"></textarea>
+    <h3>Em chắc chắn đến mức nào?</h3>
+    <div class="hl-row"><label class="hl-opt" style="margin:0"><input type="radio" name="r4" value="Chưa chắc"><span>Chưa chắc</span></label><label class="hl-opt" style="margin:0"><input type="radio" name="r4" value="Khá chắc"><span>Khá chắc</span></label><label class="hl-opt" style="margin:0"><input type="radio" name="r4" value="Rất chắc"><span>Rất chắc</span></label></div>
+    <button class="hl-btn" id="r_go" disabled>Nộp và xem kết quả</button>
+    <div class="hl-cmp" id="r_out" hidden></div>
+    <div class="hl-row" id="r_act" hidden><button class="hl-btn" id="r_copy">Sao chép kết quả để gửi cô/thầy</button><a class="hl-btn alt" href="products.html#hoc-lieu" style="text-decoration:none">Xem lại bằng chứng</a></div>
+    <p class="mut" id="r_msg" role="status"></p>
+  </div>
+
+  <p class="mut" style="margin-top:16px">Mô phỏng chỉ để minh họa: hạt vẽ không đúng tỉ lệ và số lượng thật. Số cân dựa trên định luật bảo toàn khối lượng. Nguồn bằng chứng và hướng dẫn làm thí nghiệm thật: xem phiếu mô tả học liệu.</p>
+  <div class="hero-actions" style="margin-top:20px"><a class="btn btn-light" href="index.html">← Về trang chủ</a></div>
+</div>
+</div></section>
+<!-- CÔNG CỤ LƯU VẾT -->
+<section class="page-section" id="cong-cu" data-cat="profile"><div class="wrap"><div class="hl">
+  <div class="hl-card reveal lift product-card" style="margin-bottom: 32px;">
+    <div class="product-head"><h2 class="p-title">Công cụ lưu vết làm việc nhóm</em></h2><p class="mut"></p><ul class="badges" aria-label="Phân loại sản phẩm"><li class="badge b-rs">Nghiên cứu Sư phạm</li></ul></div>
+    
+    <div class="tools-grid">
+      <div class="tool-item">
+        <div class="tool-head">
+          <img src="https://cdn.simpleicons.org/dropbox/17365d" alt="Dropbox">
+          <h3>Dropbox</h3>
+        </div>
+        <p class="tool-desc">Tính năng Lock Editing, Activity Log & Version History khôi phục phiên bản trước.</p>
+        <img class="tool-img" src="https://www.dropboxforum.com/t5/s/mxpez29397/images/bS03MjMzMTMtNDE1MzJpNkM3QjZBMDcwRUQ5MTE2Rg?revision=2" alt="Dropbox History" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=600&q=80';">
+        <a class="tool-link" href="https://help.dropbox.com/organize/file-activity" target="_blank" rel="noopener">Truy cập ứng dụng ↗</a>
+      </div>
+      
+      <div class="tool-item">
+        <div class="tool-head">
+          <img src="https://cdn.simpleicons.org/googledrive/17365d" alt="Google Drive">
+          <h3>Google Drive</h3>
+        </div>
+        <p class="tool-desc">Quản lý Timestamp tự động, tắt chỉnh sửa form và Revision History chi tiết.</p>
+        <img class="tool-img" src="https://images.ctfassets.net/lzny33ho1g45/5ZOUvBI9qo98ZDKEKTLaug/bafeb2a1eff0af52a65209b13559c268/google-docs-revision-historyimage3.png?w=800" alt="Google Docs History" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80';">
+        <a class="tool-link" href="https://support.google.com/drive/answer/2409045?hl=vi" target="_blank" rel="noopener">Truy cập ứng dụng ↗</a>
+      </div>
+      
+      <div class="tool-item">
+        <div class="tool-head">
+          <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/microsoft-onedrive.svg" alt="OneDrive">
+          <h3>OneDrive</h3>
+        </div>
+        <p class="tool-desc">Cấp quyền truy cập (Can view/edit) và truy vết thao tác chỉnh sửa tệp nhóm.</p>
+        <img class="tool-img" src="https://oit.colorado.edu/sites/default/files/linkShare-3.png" alt="OneDrive Sharing" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80';">
+        <a class="tool-link" href="https://support.microsoft.com/vi-vn/onedrive" target="_blank" rel="noopener">Truy cập ứng dụng ↗</a>
+      </div>
+      
+      <div class="tool-item">
+        <div class="tool-head">
+          <img src="https://cdn.simpleicons.org/padlet/17365d" alt="Padlet">
+          <h3>Padlet</h3>
+        </div>
+        <p class="tool-desc">Quản lý bài đăng (Post Ownership), Content Moderation và vai trò duyệt bài.</p>
+        <img class="tool-img" src="https://files.helpdocs.io/xxifo1al2f/articles/typfdby7fn/1761226939446/image.png" alt="Padlet Permissions" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80';">
+        <a class="tool-link" href="https://vi.padlet.com/" target="_blank" rel="noopener">Truy cập ứng dụng ↗</a>
+      </div>
+    </div>
+  </div>
+</div></div></section>
+
+<!-- PHIẾU TỰ ĐÁNH GIÁ NĂNG LỰC SỐ (WORD NHÚNG) -->
+<section class="page-section" id="phieu" data-cat="profile"><div class="wrap"><div class="hl">
+  <div class="hl-card reveal lift product-card" style="margin-bottom: 32px;">
+    <div class="product-head"><h2 class="p-title">Phiếu đánh giá năng lực số</em></h2><p class="mut">Phiếu tự đánh giá năng lực số — Một số năng lực cần cải thiện sau khi học xong học phần.</p><ul class="badges" aria-label="Phân loại sản phẩm"><li class="badge b-gd">GDPT 2018</li><li class="badge b-rs">Nghiên cứu Sư phạm</li></ul></div>
+    <div style="width: 100%; height: 580px; border: 1.5px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 16px; background: #fbfbfb;">
+      <iframe src="https://docs.google.com/document/d/1dBP8TO3QKpTiQloXWKvgrx1F79uDRUQd/preview" title="Phiếu tự đánh giá năng lực số" style="width: 100%; height: 100%; border: none;" allow="autoplay"></iframe>
+    </div>
+  </div>
+</div></div></section>
+
+<!-- PHIẾU MÔ TẢ HỌC LIỆU SỐ (GOOGLE DOCS NHÚNG) -->
+<section class="page-section" id="phieu-mo-ta" data-cat="profile"><div class="wrap"><div class="hl">
+  <div class="hl-card reveal lift product-card" style="margin-bottom: 32px;">
+    <div class="product-head"><h2 class="p-title">Bản mô tả công cụ mô phỏng tương tác ở trên</em></h2><p class="mut">Phiếu mô tả công cụ mô phỏng</p><ul class="badges" aria-label="Phân loại sản phẩm"><li class="badge b-gd">GDPT 2018</li><li class="badge b-rs">Nghiên cứu Sư phạm</li></ul></div>
+    <div style="width: 100%; height: 580px; border: 1.5px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 16px; background: #fbfbfb;">
+      <iframe src="https://docs.google.com/document/d/10ucl04PKHLRvzIFvv9R5WI2g5o-BHG3x/preview" title="Phiếu mô tả học liệu số" style="width: 100%; height: 100%; border: none;" allow="autoplay" loading="lazy"></iframe>
+    </div>
+  </div>
+</div></div></section></main>
+
+<div class="wrap"><footer><div>From mixi with love.</div></footer></div>
+<script>
+(function(){
+  var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  var panels=$$('.hl-panel'),dots=$$('#steps span');
+  function go(n){panels.forEach(function(p){p.hidden=+p.dataset.step!==n});$('#steps').hidden=n===4;dots.forEach(function(d,i){d.className=i+1===n?'on':(i+1<n?'done':'')});var active=$('.hl-panel[data-step="'+n+'"]');if(active)active.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}
+  var pred={},seen={1:false,2:false,3:false};
+  function chk1(){$('#to2').disabled=!($('input[name=q1]:checked')&&$('input[name=q2]:checked'))}
+  $$('input[name=q1],input[name=q2]').forEach(function(i){i.addEventListener('change',chk1)});
+  $('#to2').onclick=function(){var a=$('input[name=q1]:checked'),b=$('input[name=q2]:checked');pred={q1:a.value,t1:a.dataset.t,t2:b.dataset.t};
+    $('#myPred').textContent='Dự đoán của em: số chỉ của cân là '+pred.t1+'; theo em, '+pred.t2+'.';go(2)};
+  function done(k){seen[k]=true;$('#ev'+k).classList.add('seen');
+    if(seen[1]&&seen[2]&&seen[3]){var c=$('#cmp');c.hidden=false;
+      c.innerHTML=(pred.q1==='C'?'<b>Dự đoán số chỉ cân của em khớp số đo (110,0 g).</b> ':'<b>Số đo là 110,0 g, khác dự đoán “'+pred.t1+'” của em.</b> ')+'Từ cả ba thí nghiệm, đường đang ở dạng nào trong cốc? Hãy nghĩ trước khi sang bước 3.';
+      $('#to3').disabled=false;$('#to3').textContent='Sang bước viết lại'}}
+  var cv=$('#cv'),c=cv.getContext('2d'),BX=50,BY=100,BW=240,BH=210,MX=480,MY=150,MR=115,L={};
+function fm(v){return v.toFixed(1).replace('.',',')+' g'}
+function msg(t){$('#labMsg').textContent=t}
+function mass(){return (L.poured?L.g:0)+100*L.level}
+function cl(v,a,b){return Math.max(a,Math.min(b,v))}
+function setv(k,v){$('#v'+k).textContent=fm(v)}
+function reset(){var g=+$('#sg').value,i;L={g:g,S:[],Wt:[],m:[],level:1,dis:0};
+  for(i=0;i<g*3;i++)L.S.push({x:.5,y:-.4-Math.random()*.4,px:.5+(Math.random()-.5)*.3,py:.93+Math.random()*.05});
+  for(i=0;i<110;i++)L.Wt.push({x:Math.random(),y:Math.random()});
+  $('#sg').disabled=false;['pour','stir','samp','heat'].forEach(function(k){$('#b_'+k).disabled=k!=='pour'});
+  $('#b_stir').textContent='Khuấy';$('#b_samp').textContent='Lấy mẫu';$('#b_heat').textContent='Đun';
+  $$('#log .v').forEach(function(t){t.textContent='—'});cv.style.cursor='default';msg('Chọn lượng đường rồi bấm “Đổ đường vào cốc”.')}
+$('#sg').oninput=function(){$('#sgv').textContent=this.value;reset()};
+$('#b_reset').onclick=reset;
+$('#b_pour').onclick=function(){L.poured=1;this.disabled=true;$('#sg').disabled=true;$('#b_stir').disabled=false;$('#b_samp').disabled=false;setv(1,mass());
+  msg('Đường lắng xuống đáy thành các hạt rắn. Cân chỉ '+fm(mass())+'. Bấm “Khuấy” để hòa tan.')};
+$('#b_stir').onclick=function(){L.stir=!L.stir;this.textContent=L.stir?'Dừng khuấy':'Khuấy'};
+$('#b_samp').onclick=function(){L.samp=!L.samp;cv.style.cursor=L.samp?'crosshair':'default';this.textContent=L.samp?'Tắt lấy mẫu':'Lấy mẫu';if(L.samp)msg('Bấm vào 3 vị trí khác nhau trong phần nước của cốc để lấy mẫu.')};
+$('#b_heat').onclick=function(){L.heat=!L.heat;this.textContent=L.heat?'Tắt bếp':'Đun'};
+cv.onclick=function(e){if(!L.samp)return;var r=cv.getBoundingClientRect(),X=(e.clientX-r.left)*640/r.width,Y=(e.clientY-r.top)*360/r.height,ty=BY+BH*(1-.85*L.level);
+  if(X<BX||X>BX+BW||Y<ty||Y>BY+BH){msg('Hãy bấm vào bên trong phần nước của cốc.');return}
+  var n=0;L.S.forEach(function(p){var dx=p.x*BW+BX-X,dy=p.y*BH+BY-Y;if(dx*dx+dy*dy<3025)n++});
+  var ok=L.dis>=.9;L.m.push({x:X,y:Y,ok:ok&&n>0});
+  msg(ok?(n?'Mẫu ở đây có '+n+' hạt đường: nước ngọt.':'Mẫu này ngẫu nhiên có ít hạt hơn. Thử vị trí khác, đường phân tán khắp cốc.'):'Đường chưa tan đều ('+n+' hạt trong mẫu). Hãy khuấy cho tan hết rồi lấy mẫu lại.');
+  if(L.m.filter(function(m){return m.ok}).length>=3){msg('Cả 3 mẫu ở 3 chỗ khác nhau đều có đường: đường phân tán đều khắp cốc.');done(2)}};
+function step(dt){var f=.85*L.level,top=1-f;if(L.stir){L.mixed=1;L.dis=Math.min(1,L.dis+dt/4)}
+  if(L.poured)L.S.forEach(function(p){if(L.level<.15||!L.mixed){p.x+=(p.px-p.x)*.1;p.y=p.y<p.py?Math.min(p.py,p.y+.025):p.y+(p.py-p.y)*.1}
+    else{var k=L.stir?.1:.014;p.x=cl(p.x+(Math.random()-.5)*k,.03,.97);p.y=cl(p.y+(Math.random()-.5)*k,top+.03,.97)}});
+  L.Wt.forEach(function(w){w.x=cl(w.x+(Math.random()-.5)*.02,0,1);w.y=cl(w.y+(Math.random()-.5)*.02,0,1)});
+  if(L.dis>=.9&&!L.l2){L.l2=1;setv(2,mass());$('#b_heat').disabled=false;msg('Không còn nhìn thấy hạt đường nào, nhưng cân vẫn chỉ '+fm(mass())+'. Bật kính phóng đại để xem đường đang ở đâu.');done(1)}
+  if(L.heat){L.level=Math.max(0,L.level-dt/10);if(!L.level){L.heat=0;$('#b_heat').disabled=true;$('#b_heat').textContent='Đun';setv(3,mass());
+    msg('Nước đã bay hơi hết (khối lượng giảm vì hơi nước thoát ra ngoài). Trong cốc còn '+fm(mass())+' đường dạng rắn: đường không hề biến mất.');done(3)}}}
+function draw(){c.clearRect(0,0,640,360);var f=.85*L.level,ty=BY+BH*(1-f),i,t=Date.now()/300;
+  c.fillStyle='rgba(110,185,240,.35)';c.fillRect(BX,ty,BW,BY+BH-ty);
+  if(L.poured){var sf=Math.max(1-L.dis,L.level<.15?(.15-L.level)/.15:0),s=7*sf;if(s>.4){c.fillStyle='#fff';c.strokeStyle='#9a8a90';c.lineWidth=1;L.S.forEach(function(p){var X=BX+p.x*BW,Y=BY+p.y*BH;c.fillRect(X,Y,s,s);c.strokeRect(X,Y,s,s)})}}
+  c.strokeStyle='#5b4a50';c.lineWidth=3;c.beginPath();c.moveTo(BX-6,BY-14);c.lineTo(BX,BY);c.lineTo(BX,BY+BH);c.lineTo(BX+BW,BY+BH);c.lineTo(BX+BW,BY);c.lineTo(BX+BW+6,BY-14);c.stroke();
+  c.fillStyle='#cdbcc2';c.fillRect(BX-30,BY+BH+3,BW+60,14);
+  c.setLineDash([5,4]);c.strokeStyle='#b8325a';c.lineWidth=2;L.m.slice(-3).forEach(function(m){c.beginPath();c.arc(m.x,m.y,55,0,7);c.stroke()});c.setLineDash([]);
+  if(L.heat){c.fillStyle='#ff9f1c';[-50,0,50].forEach(function(d,j){var x=BX+BW/2+d,h=18+6*Math.sin(t+j);c.beginPath();c.moveTo(x-10,BY+BH+17);c.lineTo(x,BY+BH+17+h);c.lineTo(x+10,BY+BH+17);c.fill()});
+    c.strokeStyle='#9aa6b0';c.lineWidth=2;for(i=0;i<3;i++){c.beginPath();for(var y=0;y<40;y+=4)c.lineTo(BX+60+i*60+6*Math.sin(t+y/6+i),ty-y-6);c.stroke()}}
+  if($('#micro').checked){c.save();c.beginPath();c.arc(MX,MY,MR,0,7);c.clip();c.fillStyle='#f4faff';c.fillRect(MX-MR,MY-MR,2*MR,2*MR);
+    var n=Math.ceil(110*L.level);c.fillStyle='#5aa9e6';for(i=0;i<n;i++){var w=L.Wt[i];c.beginPath();c.arc(MX-MR+2*MR*w.x,MY-MR+2*MR*(1-f+f*w.y),3.5,0,7);c.fill()}
+    if(L.poured){c.fillStyle='#f08a24';L.S.forEach(function(p){c.beginPath();c.arc(MX-MR+2*MR*p.x,MY-MR+2*MR*p.y,6,0,7);c.fill()})}
+    c.restore();c.strokeStyle='#5b4a50';c.lineWidth=2;c.beginPath();c.arc(MX,MY,MR,0,7);c.stroke();
+    c.fillStyle='#2b1d22';c.font='13px sans-serif';c.fillText('Mô hình hạt (phóng đại)',MX-72,MY-MR-8);
+    c.fillStyle='#5aa9e6';c.beginPath();c.arc(MX-90,MY+MR+22,5,0,7);c.fill();c.fillStyle='#2b1d22';c.fillText('nước',MX-80,MY+MR+27);
+    c.fillStyle='#f08a24';c.beginPath();c.arc(MX-10,MY+MR+22,6,0,7);c.fill();c.fillStyle='#2b1d22';c.fillText('đường: '+(L.poured?L.S.length:0)+' hạt',MX+2,MY+MR+27)}
+  else{c.fillStyle='#6d5a61';c.font='14px sans-serif';c.fillText('Bật kính phóng đại để xem các hạt.',MX-110,MY)}
+  var tx=fm(mass());if($('#scale').textContent!==tx)$('#scale').textContent=tx}
+var lt=0;function frame(now){var dt=Math.min(.05,(now-(lt||now))/1000);lt=now;step(dt);draw();requestAnimationFrame(frame)}
+reset();requestAnimationFrame(frame);
+$('#to3').onclick=function(){go(3)};
+  function chk3(){var all=$$('.chk').every(function(c){return c.checked});$('#showModel').disabled=!(all&&$('#ans').value.trim().length>=20)}
+  $$('.chk').forEach(function(c){c.onchange=chk3});$('#ans').oninput=chk3;
+  $('#showModel').onclick=function(){$('#model').hidden=false;try{localStorage.setItem('hl_done',String(Date.now()))}catch(e){}};
+  $('#copy').onclick=function(){var cf=$('input[name=conf]:checked');
+    var t='Dự đoán ban đầu: cân chỉ '+pred.t1+'; '+pred.t2+'.\nKết luận sau khi xem bằng chứng: '+$('#ans').value.trim()+'\nMức chắc chắn: '+(cf?cf.value:'(chưa chọn)');
+    var m=$('#copyMsg');if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){m.textContent='Đã sao chép, em dán vào word sau đó nộp qua Zalo cho giáo viên xem nhé!'},function(){m.textContent='Không sao chép được, em hãy chụp màn hình bài làm.'})}else{m.textContent='Trình duyệt không hỗ trợ sao chép, em hãy chụp màn hình bài làm.'}};
+  $('#redo').onclick=function(){location.reload()};
+  function chk4(){$('#r_go').disabled=!($('input[name=r1]:checked')&&$('input[name=r2]:checked')&&$('#r3').value.trim().length>=10)}
+  $$('input[name=r1],input[name=r2]').forEach(function(i){i.addEventListener('change',chk4)});$('#r3').oninput=chk4;
+  var rtxt='';
+  $('#r_go').onclick=function(){var a=$('input[name=r1]:checked').value,b=$('input[name=r2]:checked').value,cf=$('input[name=r4]:checked'),o=$('#r_out'),bad=[];
+    if(a!=='C')bad.push('Câu 1: cân phải chỉ đúng 110 g vì đường vẫn còn trong cốc.');
+    if(b!=='B')bad.push('Câu 2: dung dịch nặng 100,0 g và muối vẫn còn dưới dạng các hạt rất nhỏ trong nước.');
+    var kq=bad.length?'Có dấu hiệu quan niệm cũ quay lại ('+bad.length+'/2 câu)':'Giữ vững cách hiểu đúng (2/2 câu)';
+    o.hidden=false;o.style.background=bad.length?'#fff7e0':'var(--okbg)';o.style.borderColor=bad.length?'#e0a800':'var(--ok)';
+    o.innerHTML='<b>'+kq+'</b>'+(bad.length?'<ul style="margin:8px 0 0 18px"><li>'+bad.join('</li><li>')+'</li></ul><p style="margin:8px 0 0">Bấm “Xem lại bằng chứng” rồi thử lại phòng thí nghiệm ảo.</p>':'');
+    rtxt='KIỂM TRA SAU 2 TUẦN\nCâu 1: '+a+' (đúng là C)\nCâu 2: '+b+' (đúng là B)\nCâu 3: '+$('#r3').value.trim()+'\nMức chắc chắn: '+(cf?cf.value:'(chưa chọn)')+'\nKết quả: '+kq;$('#r_act').hidden=false};
+  $('#r_copy').onclick=function(){var m=$('#r_msg');if(navigator.clipboard){navigator.clipboard.writeText(rtxt).then(function(){m.textContent='Đã sao chép.'},function(){m.textContent='Không sao chép được, hãy chụp màn hình.'})}else m.textContent='Hãy chụp màn hình kết quả.'};
+  $('#dueGo').onclick=function(){go(4)};
+  try{var d=+localStorage.getItem('hl_done');if(d&&Date.now()-d>=14*864e5)$('#due').hidden=false}catch(e){}
+  if(location.hash==='#sau2tuan')go(4);
+
+})();
+</script>
+<script src="script.js" defer></script>
+</body>
+</html>
+
